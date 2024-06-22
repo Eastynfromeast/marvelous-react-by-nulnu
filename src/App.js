@@ -1,18 +1,23 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
-import Header from "./components/Header";
+import Layout from "./components/Layout";
 
 function App() {
 	const router = createBrowserRouter(
 		[
 			{
-				path: "/",
-				element: <Home />,
-			},
-			{
-				path: "/detail/:id",
-				element: <Detail />,
+				element: <Layout />,
+				children: [
+					{
+						path: "/",
+						element: <Home />,
+					},
+					{
+						path: "/detail/:id",
+						element: <Detail />,
+					},
+				],
 			},
 		],
 		{
@@ -20,11 +25,7 @@ function App() {
 		}
 	);
 
-	return (
-		<RouterProvider router={router}>
-			<Header />
-		</RouterProvider>
-	);
+	return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -6,11 +6,13 @@ function Header() {
 	return (
 		<div>
 			<header>
-				<div>
-					<Link to="/">
-						<span>Go Back</span>
-					</Link>
-				</div>
+				{location.pathname !== "/" && (
+					<div>
+						<Link to="/">
+							<span>Go Back</span>
+						</Link>
+					</div>
+				)}
 				<div>
 					<svg width="130" height="52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 						<rect fill="#EC1D24" width="100%" height="100%"></rect>

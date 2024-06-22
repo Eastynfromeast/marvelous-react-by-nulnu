@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
 
 function Home() {
 	const [heroes, setHeroes] = useState("");
@@ -20,7 +19,6 @@ function Home() {
 	}, [MARVEL_URL]);
 	return (
 		<div>
-			<h1>Marvelous React Home</h1>
 			{heroes !== "" && (
 				<>
 					<ul>
