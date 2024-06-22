@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 function Home() {
 	const [heroes, setHeroes] = useState("");
@@ -27,8 +28,14 @@ function Home() {
 							return (
 								<li key={hero.id}>
 									<Link to={`/detail/${hero.id}`}>
-										<img src={createImageURL(hero.thumbnail)} alt={hero.name} />
-										<h3>{hero.name}</h3>
+										<div>
+											<figure>
+												<img src={createImageURL(hero.thumbnail)} alt={hero.name} />
+											</figure>
+										</div>
+										<div>
+											<h3>{hero.name}</h3>
+										</div>
 									</Link>
 								</li>
 							);
