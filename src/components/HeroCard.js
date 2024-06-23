@@ -5,7 +5,7 @@ import { createImageURL } from "../libraries/utils";
 function HeroCard({ id, name, thumbnail }) {
 	const noImage = thumbnail.path.indexOf("image_not_available") > -1;
 	return (
-		<li className={styles.heroCard}>
+		<div className={styles.heroCard}>
 			<Link to={`/detail/${id}`}>
 				<div className={styles.heroCardImg}>
 					<figure>
@@ -24,7 +24,7 @@ function HeroCard({ id, name, thumbnail }) {
 					<p>{`CODE : ${id}`}</p>
 				</div>
 			</Link>
-		</li>
+		</div>
 	);
 }
 
