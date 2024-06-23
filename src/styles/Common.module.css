@@ -1,0 +1,172 @@
+:root {
+	--color_black: #151515;
+	--color_red: #e62429;
+	--color_white: #fff;
+	--color_gray: #bbb;
+}
+
+.container {
+	box-sizing: border-box;
+	max-width: 1240px;
+	padding: 10px 20px 0;
+	margin: 0 auto;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.container * {
+	box-sizing: border-box;
+}
+
+.container li,
+.heroCard li {
+	list-style: none;
+}
+
+.container a,
+.heroCard a {
+	display: block;
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+}
+
+.container img,
+.heroCard img {
+	width: 100%;
+}
+
+.heroHeader {
+	padding: 0;
+	font-size: 26px;
+	text-transform: uppercase;
+	letter-spacing: -0.5px;
+}
+
+.heroDataResult {
+	color: #767676;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.herosList {
+	padding: 0;
+	margin: 0 auto;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15.82%, 1fr));
+	transition: max-height 1s ease-out;
+	overflow: hidden;
+	grid-column-gap: 10px;
+}
+
+.heroCard {
+	position: relative;
+	list-style: none;
+	background: var(--color_black);
+	margin: 6px 0 4px;
+}
+
+.heroCard::after {
+	border-color: transparent var(--color_white) transparent transparent;
+	border-style: solid;
+	border-width: 12px 12px 0 0;
+	bottom: 0;
+	content: "";
+	position: absolute;
+	right: 0;
+	top: auto;
+	z-index: 31;
+}
+
+.heroCard .heroCardImg figure {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	position: relative;
+	height: 210px;
+	overflow: hidden;
+}
+
+.heroCardImg figure > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.2s ease-in-out;
+	transform: scaleX(1);
+}
+
+.heroCardImg figure::after {
+	height: 4px;
+	content: "";
+	background-color: var(--color_red);
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.heroCardBody {
+	position: relative;
+	height: 145px;
+	padding: 16px 24px 17px 20px;
+	background: var(--color_black);
+	color: var(--color_white);
+	font-size: 16px;
+	transition: all 0.17s ease-in-out;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	z-index: 30;
+}
+
+.heroCard .heroCardBody::before {
+	background: var(--color_red);
+	bottom: 100%;
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+	transition: transform 0.3s;
+	width: 100%;
+	z-index: -1;
+}
+
+.heroCardBody h3 {
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 1em;
+	font-weight: 500;
+	letter-spacing: 1px;
+}
+
+.heroCardBody p {
+	margin: 0;
+	color: var(--color_gray);
+	font-size: 0.75em;
+}
+
+.heroCard:hover .heroCardImg figure > img {
+	transform: scale3d(1.05, 1.05, 1);
+}
+
+.heroCard:hover .heroCardBody::before {
+	transform: translate3d(0, 100%, 0);
+}
+
+.heroCard:hover .heroCardBody p {
+	color: var(--color_white);
+}
+
+@media (max-width: 768px) {
+	.herosList {
+		grid-template-columns: repeat(auto-fit, minmax(23.75%, 1fr));
+	}
+}
+@media (max-width: 429px) {
+	.herosList {
+		grid-template-columns: repeat(auto-fill, minmax(31.66%, 1fr));
+	}
+}
