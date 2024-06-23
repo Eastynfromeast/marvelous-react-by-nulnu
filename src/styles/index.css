@@ -12,3 +12,7 @@ code {
 #root {
 	position: relative;
 }
+
+main {
+	margin-top: 76px;
+}

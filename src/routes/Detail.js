@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { createImageURL } from "../libraries/utils";
 import styles from "../styles/Common.module.css";
+import Loader from "../components/Loader";
+import DetailList from "../components/DetailList";
 
 function Detail() {
 	const { id } = useParams();
@@ -20,7 +22,7 @@ function Detail() {
 	console.log(detail);
 	return (
 		<div className={styles.detailContainer}>
-			{isLoading ? <h2> We are loading...</h2> : null}
+			{isLoading ? <Loader context={"Loading..."} /> : null}
 			{detail !== "" && (
 				<div className={styles.detailWrapper}>
 					<div className={styles.detailBg}>
@@ -36,21 +38,26 @@ function Detail() {
 						</div>
 						<div className={styles.bioWrap}>
 							<span>Description</span>
-							<p>{detail.description}</p>
+							<p>{detail.description !== "" ? detail.description : "No description written"}</p>
 						</div>
-
-						<ul>
-							<h3>Comics ({detail.comics.returned}) </h3>
-							{detail.comics.items.map((comic, index) => {
-								return <li key={`${index}`}>{comic.name}</li>;
-							})}
-						</ul>
-						<ul>
-							<h3>Events ({detail.events.returned}) </h3>
-							{detail.events.items.map((event, index) => {
-								return <li key={`${index}`}>{event.name}</li>;
-							})}
-						</ul>
+						<DetailList title={"Comics"} items={detail.comics.items} returned={detail.comics.returned} />
+						<DetailList title={"Events"} items={detail.events.items} returned={detail.events.returned} />
+						<DetailList title={"Series"} items={detail.series.items} returned={detail.series.returned} />
+						<DetailList title={"Stories"} items={detail.stories.items} returned={detail.stories.returned} />
+						<div className={styles.urlWrap}>
+							<span>For more infos...</span>
+							<ul>
+								{detail.urls.map(url => {
+									return (
+										<li>
+											<a href={url.url} target="_blank" rel="noreferrer">
+												{url.type}
+											</a>
+										</li>
+									);
+								})}
+							</ul>
+						</div>
 					</div>
 				</div>
 			)}

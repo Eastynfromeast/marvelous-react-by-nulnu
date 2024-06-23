@@ -1,9 +1,11 @@
 .header {
-	background: var(--color_header_gray);
+	background: var(--color_dark_gray);
 	padding: 10px 0;
-	position: relative;
 	z-index: 999;
 	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
 .header * {
@@ -68,8 +70,7 @@
 }
 
 .goBack a:hover {
-	background: var(--color_white);
-	color: var(--color_red);
+	background: var(--color_red);
 	font-weight: 600;
 }
 

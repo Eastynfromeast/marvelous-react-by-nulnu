@@ -3,7 +3,24 @@
 	--color_red: #e62429;
 	--color_white: #fff;
 	--color_gray: #bbb;
-	--color_header_gray: #202020;
+	--color_dark_gray: #202020;
+}
+
+.bgBlack {
+	background-color: var(--color_black);
+}
+
+.loaderWrapper {
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	min-height: 100vh;
+	padding-top: 30%;
+}
+
+.loaderWrapper > p {
+	color: var(--color_red);
 }
 
 .container {
@@ -12,6 +29,7 @@
 	padding: 10px 20px 0;
 	margin: 0 auto;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	background-color: var(--color_white);
 }
 
 .detailContainer {
@@ -19,6 +37,7 @@
 	margin: 0 auto;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 	background-color: var(--color_black);
+	min-height: calc(100vh - 76px);
 }
 
 .container *,
@@ -76,6 +95,12 @@
 	list-style: none;
 	background: var(--color_black);
 	margin: 6px 0 4px;
+	animation-name: floating;
+	animation-duration: 0.15s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	opacity: 0;
 }
 
 .heroCard::after {
@@ -175,6 +200,7 @@
 	width: 100%;
 	min-height: 100vh;
 	color: var(--color_white);
+	animation: floating 1s ease-in-out 1 forwards;
 }
 
 .detailBg {
@@ -195,7 +221,7 @@
 .detailContext {
 	position: relative;
 	z-index: 1;
-	max-width: 1000px;
+	max-width: 600px;
 	margin: 0 auto;
 	padding: 100px 0;
 	display: flex;
@@ -206,24 +232,33 @@
 }
 
 .detailThumbnail {
-	max-width: 350px;
+	max-width: 600px;
+	margin: 0 auto;
+	width: 100%;
+	margin-bottom: 50px;
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-.bioWrap {
+.bioWrap,
+.urlWrap {
 	font-size: 16px;
 	width: 100%;
 	margin-bottom: 35px;
 }
 
-.bioWrap > span {
+.bioWrap > span,
+.urlWrap > span {
+	display: inline-block;
 	line-height: 20px;
 	text-transform: uppercase;
+	margin-bottom: 7px;
 }
 
-.bioWrap > span::after {
+.bioWrap > span::after,
+.urlWrap > span::after {
 	display: block;
 	content: "";
-	width: 5%;
+	width: 100%;
 	height: 1px;
 	background: var(--color_white);
 	margin: 15px 0;
@@ -235,9 +270,112 @@
 	text-transform: uppercase;
 }
 
+.bioWrap p {
+	margin: 0 auto;
+}
+
+.bioWrap ul,
+.urlWrap ul {
+	margin: 0;
+}
+
+.bioWrap ul li {
+	padding: 3px 0;
+	width: auto;
+	transition: all 0.17s ease-in-out;
+	line-height: 20px;
+	text-transform: capitalize;
+}
+
+.bioWrap ul li:hover {
+	background-color: var(--color_black);
+	color: var(--color_red);
+	font-weight: 500;
+}
+
+.urlWrap > span {
+	color: var(--color_red);
+}
+
+.urlWrap > span::after {
+	background: var(--color_red);
+}
+
+.urlWrap ul {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-content: space-between;
+	align-items: center;
+	padding: 0;
+	width: 100%;
+}
+
+.urlWrap ul li {
+	list-style: none;
+	text-transform: capitalize;
+	padding: 25px;
+	text-align: center;
+	background: var(--color_dark_gray);
+	color: var(--color_white);
+	min-width: 33.33%;
+	border-right: 1px solid #393939;
+	transition: all 0.2s ease-in-out;
+}
+
+.urlWrap ul li:last-of-type {
+	border-right: none;
+}
+
+.urlWrap ul li a {
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.urlWrap ul li:hover {
+	background-color: var(--color_red);
+}
+
+.footer {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 30px;
+	background-color: var(--color_dark_gray);
+	color: var(--color_gray);
+	margin-top: 60px;
+	position: relative;
+	z-index: 1;
+}
+
+.footer p {
+	margin: 0;
+	text-align: right;
+	font-size: 14px;
+}
+
+@keyframes floating {
+	0% {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 @media (max-width: 768px) {
 	.herosList {
 		grid-template-columns: repeat(auto-fit, minmax(23.75%, 1fr));
+	}
+
+	.detailContext {
+		padding: 50px 15px;
+	}
+
+	.bioWrap > span::after {
+		margin: 7px 0;
 	}
 }
 @media (max-width: 429px) {

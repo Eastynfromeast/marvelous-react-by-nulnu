@@ -2,10 +2,16 @@ import { Link } from "react-router-dom";
 import styles from "../styles/Common.module.css";
 import { createImageURL } from "../libraries/utils";
 
-function HeroCard({ id, name, thumbnail }) {
+function HeroCard({ id, name, thumbnail, index }) {
 	const noImage = thumbnail.path.indexOf("image_not_available") > -1;
+	const noAnimation = index !== undefined;
 	return (
-		<div className={styles.heroCard}>
+		<li
+			className={styles.heroCard}
+			style={{
+				animationDelay: noAnimation ? `${index * 0.15}s` : "none",
+			}}
+		>
 			<Link to={`/detail/${id}`}>
 				<div className={styles.heroCardImg}>
 					<figure>
@@ -24,7 +30,7 @@ function HeroCard({ id, name, thumbnail }) {
 					<p>{`CODE : ${id}`}</p>
 				</div>
 			</Link>
-		</div>
+		</li>
 	);
 }
 
