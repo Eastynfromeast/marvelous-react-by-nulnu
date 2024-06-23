@@ -9,7 +9,7 @@ function DetailList({ title, items, returned }) {
 			<ul>
 				{returned !== 0 ? (
 					items.map((item, index) => {
-						return <li key={`${index}`}>{item.name}</li>;
+						return <li key={`${title}_${index}`}>{item.name}</li>;
 					})
 				) : (
 					<p>No item has found</p>

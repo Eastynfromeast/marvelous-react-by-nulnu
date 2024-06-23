@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { createImageURL } from "../libraries/utils";
-import styles from "../styles/Common.module.css";
 import Loader from "../components/Loader";
 import DetailList from "../components/DetailList";
+import ErrorMessage from "../components/ErrorMessage";
+import styles from "../styles/Common.module.css";
 
 function Detail() {
 	const { id } = useParams();
@@ -14,7 +15,6 @@ function Detail() {
 
 	useEffect(() => {
 		const getDetails = async () => {
-			// const json = await (await fetch(detailUrl)).json();
 			try {
 				const response = await fetch(detailUrl);
 				if (!response.ok) {
@@ -35,15 +35,11 @@ function Detail() {
 		};
 		getDetails();
 	}, [id, detailUrl]);
-	console.log(detail);
+
 	return (
 		<div className={styles.detailContainer}>
 			{isLoading ? <Loader context={"Loading..."} /> : null}
-			{hasError ? (
-				<div className={styles.errorContainer}>
-					<h2 className={styles.errorMessage}>Error Happend! {hasError}</h2>
-				</div>
-			) : null}
+			{hasError !== null ? <ErrorMessage error={hasError} /> : null}
 			{detail !== "" && (
 				<div className={styles.detailWrapper}>
 					<div className={styles.detailBg}>
@@ -70,7 +66,7 @@ function Detail() {
 							<ul>
 								{detail.urls.map(url => {
 									return (
-										<li>
+										<li key={url.type}>
 											<a href={url.url} target="_blank" rel="noreferrer">
 												{url.type}
 											</a>
