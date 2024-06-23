@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import ResetPageScroll from "./ ResetPageScroll";
+import ResetPageScroll from "./ResetPageScroll";
 function Layout() {
 	let layoutLocation = useLocation();
 	return (

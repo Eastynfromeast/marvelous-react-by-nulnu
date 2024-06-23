@@ -41,7 +41,8 @@
 }
 
 .container *,
-.detailContainer * {
+.detailContainer *,
+.errorContainer * {
 	box-sizing: border-box;
 }
 
@@ -335,6 +336,28 @@
 
 .urlWrap ul li:hover {
 	background-color: var(--color_red);
+}
+
+.errorContainer {
+	width: 100%;
+	padding-top: 100px;
+	padding: 100px 20px;
+	background: var(--color_dark_gray);
+	color: var(--color_white);
+	min-height: 100vh;
+	margin-bottom: -60px;
+}
+
+.errorMessage {
+	max-width: 600px;
+	margin: 0 auto;
+	color: var(--color_white);
+}
+
+.errorStatus > span {
+	display: inline-block;
+	color: var(--color_red);
+	margin-right: 5px;
 }
 
 .footer {

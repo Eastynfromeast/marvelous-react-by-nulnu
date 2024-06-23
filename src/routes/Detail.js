@@ -10,12 +10,28 @@ function Detail() {
 	const detailUrl = `https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters/${id}`;
 	const [isLoading, setIsLoading] = useState(true);
 	const [detail, setDetail] = useState("");
+	const [hasError, setHasError] = useState(null);
 
 	useEffect(() => {
 		const getDetails = async () => {
-			const json = await (await fetch(detailUrl)).json();
-			setDetail(json.data.results[0]);
-			setIsLoading(false);
+			// const json = await (await fetch(detailUrl)).json();
+			try {
+				const response = await fetch(detailUrl);
+				if (!response.ok) {
+					throw new Error(`Error status :${response.stauts} `);
+				}
+
+				const json = await response.json();
+				if (json.code === 404) {
+					throw new Error("404 : Not Found");
+				}
+				setDetail(json.data.results[0]);
+			} catch (error) {
+				console.error("Error happened on fetching details:", error);
+				setHasError(error.message);
+			} finally {
+				setIsLoading(false);
+			}
 		};
 		getDetails();
 	}, [id, detailUrl]);
@@ -23,6 +39,11 @@ function Detail() {
 	return (
 		<div className={styles.detailContainer}>
 			{isLoading ? <Loader context={"Loading..."} /> : null}
+			{hasError ? (
+				<div className={styles.errorContainer}>
+					<h2 className={styles.errorMessage}>Error Happend! {hasError}</h2>
+				</div>
+			) : null}
 			{detail !== "" && (
 				<div className={styles.detailWrapper}>
 					<div className={styles.detailBg}>
