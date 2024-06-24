@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/marvelous-react-by-nulnu/static/css/main.9e52b38f.css",
+    "main.js": "/marvelous-react-by-nulnu/static/js/main.f08a6c76.js",
+    "index.html": "/marvelous-react-by-nulnu/index.html",
+    "main.9e52b38f.css.map": "/marvelous-react-by-nulnu/static/css/main.9e52b38f.css.map",
+    "main.f08a6c76.js.map": "/marvelous-react-by-nulnu/static/js/main.f08a6c76.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9e52b38f.css",
+    "static/js/main.f08a6c76.js"
+  ]
+}
