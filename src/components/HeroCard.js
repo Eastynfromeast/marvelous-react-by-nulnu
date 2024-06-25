@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "../styles/Common.module.css";
+import styles from "../styles/HeroCard.module.css";
 
 function HeroCard({ id, name, thumbnail, index }) {
 	const noImage = thumbnail.indexOf("image_not_available") > -1;

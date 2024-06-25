@@ -1,8 +1,8 @@
-import Loader from "../components/Loader";
-import DetailList from "../components/DetailList";
-import ErrorMessage from "../components/ErrorMessage";
-import styles from "../styles/Common.module.css";
 import useHero from "../hooks/useHero";
+import Loader from "../components/Loader";
+import ErrorMessage from "../components/ErrorMessage";
+import DetailList from "../components/DetailList";
+import styles from "../styles/Detail.module.css";
 
 function Detail() {
 	const { hero, isLoading, hasError } = useHero();

@@ -32,14 +32,6 @@
 	background-color: var(--color_white);
 }
 
-.detailContainer {
-	width: 100%;
-	margin: 0 auto;
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-	background-color: var(--color_black);
-	min-height: calc(100vh - 76px);
-}
-
 .container *,
 .detailContainer *,
 .errorContainer * {
@@ -47,13 +39,11 @@
 }
 
 .container li,
-.detailContainer li .heroCard li {
+.detailContainer li {
 	list-style: none;
 }
 
-.container a,
-.detailContainer a,
-.heroCard a {
+.container a {
 	display: block;
 	text-decoration: none;
 	width: 100%;
@@ -61,8 +51,7 @@
 }
 
 .container img,
-.detailContainer img,
-.heroCard img {
+.detailContainer img {
 	width: 100%;
 }
 
@@ -89,253 +78,6 @@
 	transition: max-height 1s ease-out;
 	overflow: hidden;
 	grid-column-gap: 10px;
-}
-
-.heroCard {
-	position: relative;
-	list-style: none;
-	background: var(--color_black);
-	margin: 6px 0 4px;
-	animation-name: floating;
-	animation-duration: 0.15s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	opacity: 0;
-}
-
-.heroCard::after {
-	border-color: transparent var(--color_white) transparent transparent;
-	border-style: solid;
-	border-width: 12px 12px 0 0;
-	bottom: 0;
-	content: "";
-	position: absolute;
-	right: 0;
-	top: auto;
-	z-index: 31;
-}
-
-.heroCard .heroCardImg figure {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	position: relative;
-	height: 210px;
-	overflow: hidden;
-}
-
-.heroCardImg figure > img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: transform 0.2s ease-in-out;
-	transform: scaleX(1);
-}
-
-.heroCardImg figure::after {
-	height: 4px;
-	content: "";
-	background-color: var(--color_red);
-	width: 100%;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-}
-
-.heroCardBody {
-	position: relative;
-	height: 145px;
-	padding: 16px 24px 17px 20px;
-	background: var(--color_black);
-	color: var(--color_white);
-	font-size: 16px;
-	transition: all 0.17s ease-in-out;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	z-index: 30;
-}
-
-.heroCard .heroCardBody::before {
-	background: var(--color_red);
-	bottom: 100%;
-	content: "";
-	height: 100%;
-	left: 0;
-	position: absolute;
-	transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-	transition: transform 0.3s;
-	width: 100%;
-	z-index: -1;
-}
-
-.heroCardBody h3 {
-	margin: 0;
-	text-transform: uppercase;
-	font-size: 1em;
-	font-weight: 500;
-	letter-spacing: 1px;
-}
-
-.heroCardBody p {
-	margin: 0;
-	color: var(--color_gray);
-	font-size: 0.75em;
-}
-
-.heroCard:hover .heroCardImg figure > img {
-	transform: scale3d(1.05, 1.05, 1);
-}
-
-.heroCard:hover .heroCardBody::before {
-	transform: translate3d(0, 100%, 0);
-}
-
-.heroCard:hover .heroCardBody p {
-	color: var(--color_white);
-}
-
-.detailWrapper {
-	width: 100%;
-	min-height: 100vh;
-	color: var(--color_white);
-	animation: floating 1s ease-in-out 1 forwards;
-}
-
-.detailBg {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	z-index: 0;
-	background-color: var(--color_black);
-}
-
-.detailBg > img {
-	width: 100%;
-	height: 100%;
-	filter: brightness(0.5) grayscale(0.75) blur(20px);
-}
-
-.detailContext {
-	position: relative;
-	z-index: 1;
-	max-width: 600px;
-	margin: 0 auto;
-	padding: 100px 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: nowrap;
-}
-
-.detailThumbnail {
-	max-width: 600px;
-	margin: 0 auto;
-	width: 100%;
-	margin-bottom: 50px;
-	box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-.bioWrap,
-.urlWrap {
-	font-size: 16px;
-	width: 100%;
-	margin-bottom: 35px;
-}
-
-.bioWrap > span,
-.urlWrap > span {
-	display: inline-block;
-	line-height: 20px;
-	text-transform: uppercase;
-	margin-bottom: 7px;
-}
-
-.bioWrap > span::after,
-.urlWrap > span::after {
-	display: block;
-	content: "";
-	width: 100%;
-	height: 1px;
-	background: var(--color_white);
-	margin: 15px 0;
-}
-
-.bioWrap h3 {
-	margin: 0;
-	padding: 0;
-	text-transform: uppercase;
-}
-
-.bioWrap p {
-	margin: 0 auto;
-}
-
-.bioWrap ul,
-.urlWrap ul {
-	margin: 0;
-}
-
-.bioWrap ul li {
-	padding: 3px 0;
-	width: auto;
-	transition: all 0.17s ease-in-out;
-	line-height: 20px;
-	text-transform: capitalize;
-}
-
-.bioWrap ul li:hover {
-	background-color: var(--color_black);
-	color: var(--color_red);
-	font-weight: 500;
-}
-
-.urlWrap > span {
-	color: var(--color_red);
-}
-
-.urlWrap > span::after {
-	background: var(--color_red);
-}
-
-.urlWrap ul {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	justify-content: space-between;
-	align-items: center;
-	padding: 0;
-	width: 100%;
-}
-
-.urlWrap ul li {
-	list-style: none;
-	text-transform: capitalize;
-	padding: 25px;
-	text-align: center;
-	background: var(--color_dark_gray);
-	color: var(--color_white);
-	min-width: 33.33%;
-	border-right: 1px solid #393939;
-	transition: all 0.2s ease-in-out;
-}
-
-.urlWrap ul li:last-of-type {
-	border-right: none;
-}
-
-.urlWrap ul li a {
-	display: block;
-	width: 100%;
-	text-decoration: none;
-	color: inherit;
-}
-
-.urlWrap ul li:hover {
-	background-color: var(--color_red);
 }
 
 .errorContainer {
@@ -391,14 +133,6 @@
 @media (max-width: 768px) {
 	.herosList {
 		grid-template-columns: repeat(auto-fit, minmax(23.75%, 1fr));
-	}
-
-	.detailContext {
-		padding: 50px 15px;
-	}
-
-	.bioWrap > span::after {
-		margin: 7px 0;
 	}
 }
 @media (max-width: 429px) {
