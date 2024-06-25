@@ -1,8 +1,9 @@
 import useHero from "../hooks/useHero";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
-import DetailList from "../components/DetailList";
+import ListItem from "../components/details/ListItem";
 import styles from "../styles/Detail.module.css";
+import GridBtns from "../components/details/GridBtns";
 
 function Detail() {
 	const { hero, isLoading, hasError } = useHero();
@@ -18,32 +19,13 @@ function Detail() {
 						<figure className={styles.detailThumbnail}>
 							<img src={hero.thumbnail} alt={`${hero.name}'s poster`} />
 						</figure>
-						<div className={styles.bioWrap}>
-							<span>Name</span>
-							<h3>{hero.name}</h3>
-						</div>
-						<div className={styles.bioWrap}>
-							<span>Description</span>
-							<p>{hero.description !== "" ? hero.description : "No description written"}</p>
-						</div>
-						<DetailList title={"Comics"} items={hero.comics.items} returned={hero.comics.returned} />
-						<DetailList title={"Events"} items={hero.events.items} returned={hero.events.returned} />
-						<DetailList title={"Series"} items={hero.series.items} returned={hero.series.returned} />
-						<DetailList title={"Stories"} items={hero.stories.items} returned={hero.stories.returned} />
-						<div className={styles.urlWrap}>
-							<span>For more infos...</span>
-							<ul>
-								{hero.urls.map(url => {
-									return (
-										<li key={url.type}>
-											<a href={url.url} target="_blank" rel="noreferrer">
-												{url.type}
-											</a>
-										</li>
-									);
-								})}
-							</ul>
-						</div>
+						<ListItem title={"Name"} tag={"h3"} name={hero.name} />
+						<ListItem title={"Description"} tag={"p"} description={hero.description} />
+						<ListItem title={"Comics"} tag={"li"} items={hero.comics.items} returned={hero.comics.returned} />
+						<ListItem title={"Events"} tag={"li"} items={hero.events.items} returned={hero.events.returned} />
+						<ListItem title={"Series"} tag={"li"} items={hero.series.items} returned={hero.series.returned} />
+						<ListItem title={"Stories"} tag={"li"} items={hero.stories.items} returned={hero.stories.returned} />
+						<GridBtns title={"For more infos..."} urls={hero.urls} />
 					</div>
 				</div>
 			)}

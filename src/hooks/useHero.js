@@ -24,6 +24,7 @@ const useHero = () => {
 				const fetchedHero = {
 					name: hero.name,
 					thumbnail: createImageURL(hero.thumbnail),
+					description: hero.description,
 					comics: hero.comics,
 					events: hero.events,
 					series: hero.series,
