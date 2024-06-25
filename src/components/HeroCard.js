@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "../styles/Common.module.css";
-import { createImageURL } from "../libraries/utils";
 
 function HeroCard({ id, name, thumbnail, index }) {
-	const noImage = thumbnail.path.indexOf("image_not_available") > -1;
+	const noImage = thumbnail.indexOf("image_not_available") > -1;
 	const noAnimation = index !== undefined;
 	return (
 		<li
@@ -16,7 +15,7 @@ function HeroCard({ id, name, thumbnail, index }) {
 				<div className={styles.heroCardImg}>
 					<figure>
 						<img
-							src={createImageURL(thumbnail)}
+							src={thumbnail}
 							alt={name}
 							style={{
 								filter: noImage ? "grayscale(1)" : "none",
